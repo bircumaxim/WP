@@ -1,3 +1,6 @@
+# Other files
+.idea/workspace.xml 
+
 # Compiled Object files
 *.slo
 *.lo
