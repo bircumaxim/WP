@@ -18,6 +18,14 @@ void TextLabel::updateLabel(HDC hdc, int x, int y){
     this->posY = y;
 }
 
+void TextLabel::renderAtPosition(HWND hwnd,int x, int y){
+    PAINTSTRUCT ps;
+    HDC hdc = BeginPaint(hwnd, &ps);
+    SetBkMode(hdc,TRANSPARENT);
+    this->drawLabel(hdc, x, y);
+    EndPaint(hwnd, &ps);
+}
+
 void TextLabel::render(HWND hwnd,RECT windowRect){
 
     PAINTSTRUCT ps;
@@ -25,8 +33,10 @@ void TextLabel::render(HWND hwnd,RECT windowRect){
     SetBkMode(hdc,TRANSPARENT);
     GetClientRect(hwnd, &windowRect);
 
-    //TODO Position settor
     this->drawLabel(hdc, windowRect.right/2, windowRect.bottom/2);
-
     EndPaint(hwnd, &ps);
+}
+
+HDC TextLabel::getHdc() {
+    return this->hdc;
 }

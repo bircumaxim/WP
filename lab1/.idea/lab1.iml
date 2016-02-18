@@ -2,19 +2,21 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/TextBox.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/TextLabel.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/WindowObject.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/config.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/TextBox.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Button.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Dimensions.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MainWindow.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/WindowObject.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MainWindow.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TextLabel.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MainWindow.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/TextLabel.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Dimensions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Dimensions.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Button.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/config.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MainWindow.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/WindowObject.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

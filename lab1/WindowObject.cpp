@@ -14,7 +14,7 @@ WindowObject::WindowObject(LPCSTR objectType, LPCSTR objectTitle, HWND parentIns
     this->ID_OBJECT = ID_OBJECT;
     this->hThisHinstance = hThisHinstance;
     this->mainInstance = CreateWindowEx(
-            (DWORD)NULL,
+            NULL,
             this->objectType,
             this->objectTitle,
             WS_VISIBLE | WS_CHILD,

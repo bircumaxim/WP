@@ -25,8 +25,9 @@ public:
 
     void render(HWND,RECT);
 
+    HDC getHdc();
 
-
+    void renderAtPosition(HWND,int,int);
 };
 
 
