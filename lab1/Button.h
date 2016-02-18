@@ -15,7 +15,6 @@ public:
             :WindowObject("BUTTON",title,parentInstace,id,dimensions){
     }
 
-
 };
 
 

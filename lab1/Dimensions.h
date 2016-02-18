@@ -13,44 +13,25 @@ private:
     int width;
     int height;
 public:
-    Dimensions(int x,int y,int w,int h){
-        this->posX = x;
-        this->posY = y;
-        this->width = w;
-        this->height = h;
-    }
+    Dimensions(int x,int y);
 
-    int getPosX() const {
-        return posX;
-    }
+    Dimensions(int x,int y,int w,int h);
 
-    void setPosX(int posX) {
-        Dimensions::posX = posX;
-    }
+    int getPosX() const;
 
-    int getPosY() const {
-        return posY;
-    }
+    void setPosX(int posX);
 
-    void setPosY(int posY) {
-        Dimensions::posY = posY;
-    }
+    int getPosY() const;
 
-    int getWidth() const {
-        return width;
-    }
+    void setPosY(int posY);
 
-    void setWidth(int width) {
-        Dimensions::width = width;
-    }
+    int getWidth() const;
 
-    int getHeight() const {
-        return height;
-    }
+    void setWidth(int width);
 
-    void setHeight(int height) {
-        Dimensions::height = height;
-    }
+    int getHeight() const;
+
+    void setHeight(int height);
 };
 
 

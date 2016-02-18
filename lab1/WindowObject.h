@@ -20,6 +20,11 @@ public:
     WindowObject(LPCSTR,LPCSTR,HWND,int,Dimensions*);
     HWND getInstance();
     int getId();
+    void setPosition(int,int);
+
+    int getWidh();
+
+    int getHeight();
 };
 
 

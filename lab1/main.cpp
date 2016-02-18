@@ -6,7 +6,8 @@
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 
 MainWindow *mainWindow;
-Button  *button;
+Button  *defaultButton;
+Button  *customButton;
 TextLabel *textLabel;
 RECT windowRect;
 RECT container;
@@ -16,7 +17,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpsz
 
     //WidowCreation
     windowSetups(hThisInstance,hPrevInstance,lpszArgument,nCmdShow,wincl,WindowProcedure);
-    mainWindow = new MainWindow("MainWindow",new Dimensions(0,0,600,600),szClassName,hThisInstance,HWND_DESKTOP);
+    mainWindow = new MainWindow("MainWindow",new Dimensions(100,40,900,600),szClassName,hThisInstance,HWND_DESKTOP);
 
     //WindowShow
     ShowWindow (mainWindow->getInstace(), nCmdShow);
@@ -32,18 +33,20 @@ int WINAPI WinMain (HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpsz
 
 void onCreate(HWND hwnd){
 
-    button = new Button("PressMe",hwnd,0,new Dimensions(0,0,100,40));
+    //TODO ACtionons for default and customButton
+    //TODO Customizing of te customButton.
+    
+    defaultButton = new Button("default",hwnd,0,new Dimensions(200,0,100,40));
+    customButton = new Button("customize",hwnd,1,new Dimensions(0,0,100,40));
     textLabel = new TextLabel("Done with Pride an Prejudice by Bircu Maxim");
 }
 
 void render(HWND hwnd){
     RedrawWindow(hwnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE);
-    PAINTSTRUCT ps;
-    HDC hdc = BeginPaint(hwnd, &ps);
-    SetBkMode(hdc,TRANSPARENT);
-    GetClientRect(hwnd, &windowRect);
-    textLabel->renderLabel(hdc, windowRect.right/2, windowRect.bottom/2);
-    EndPaint(hwnd, &ps);
+    GetClientRect(hwnd,&windowRect);
+    defaultButton->setPosition(windowRect.right/2+50,windowRect.bottom/1.5);
+    customButton->setPosition(windowRect.right/2+50,windowRect.bottom/1.5);
+    textLabel->render(hwnd,windowRect);
 }
 
 LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam){
@@ -51,6 +54,16 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
         case WM_CREATE:
             onCreate(hwnd);
             break;
+        case WM_COMMAND:{
+            if(LOWORD(wParam) == defaultButton->getId()){
+                MessageBox(hwnd,"Default Button","Alert from default button",MB_ICONINFORMATION);
+            }
+            if(LOWORD(wParam) == customButton->getId()){
+                MessageBox(hwnd,"Custom Button","Alert from custom button",MB_ICONINFORMATION);
+            }
+
+            break;
+        }
         case WM_PAINT:
             render(hwnd);
             break;
