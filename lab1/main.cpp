@@ -131,7 +131,6 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
             break;
         }
-        case WM_E
         case WM_PAINT:
             render(hwnd);
             break;
