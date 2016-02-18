@@ -16,3 +16,10 @@ void TextBox::setText(TCHAR *newText) {
     SetWindowText(this->mainInstance,newText);
 }
 
+void TextBox::superTextBox(){
+    NONCLIENTMETRICS ncb;
+    ncb.cbSize = sizeof(ncb);
+    SystemParametersInfo(SPI_GETNONCLIENTMETRICS,sizeof(ncb),&ncb,0);
+    HFONT hfon = CreateFontIndirectA(&ncb.lfMessageFont);
+    SendMessage(this->mainInstance,WM_SETFONT,(WPARAM)hfon,0);
+}

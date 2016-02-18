@@ -77,6 +77,7 @@ void render(HWND hwnd){
     resultLabel->drawLabel(hdc, 100, 80);
     questionLabel->drawLabel(hdc, windowRect.right/2,50);
     copyRight->drawLabel(hdc, windowRect.right/2, windowRect.bottom/2);
+    monitorBox->superTextBox();
     EndPaint(hwnd, &ps);
 }
 
@@ -130,6 +131,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
             break;
         }
+        case WM_E
         case WM_PAINT:
             render(hwnd);
             break;

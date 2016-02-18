@@ -20,6 +20,7 @@ public:
 
     LPCSTR getText();
     void setText(TCHAR*);
+    void superTextBox();
 };
 
 
