@@ -9,7 +9,6 @@
 
 char szClassName[ ] = "ClionWindowsApplication";
 WNDCLASSEX wincl;
-
 void windowSetups(HINSTANCE hThisInstance, HINSTANCE hPrevInstance,  LPSTR lpszArgument, int nCmdShow,WNDCLASSEX wincl, WNDPROC WindowProcedure){
     /* The Window structure */
     wincl.hInstance = hThisInstance;
