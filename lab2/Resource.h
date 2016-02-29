@@ -1,0 +1,2 @@
+#define IDC_TARGET 1000
+#define IDE_TARGET 1001
