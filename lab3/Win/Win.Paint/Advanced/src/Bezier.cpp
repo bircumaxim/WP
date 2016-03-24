@@ -9,8 +9,8 @@ void Bezier::MouseButtonDown(LPARAM lparam, WPARAM wparam) {
 
     if (wparam & MK_LBUTTON || wparam & MK_RBUTTON) {
         hdc = GetDC(hwnd);
+        setupPaintingTools(hdc);
         SelectObject(hdc, GetStockObject(WHITE_PEN));
-
         DrawBezier(hdc, points);
         if (wparam & MK_LBUTTON) {
             points[1].x = LOWORD (lparam);
@@ -29,6 +29,7 @@ void Bezier::MouseButtonDown(LPARAM lparam, WPARAM wparam) {
 void Bezier::MouseMove(LPARAM lparam, WPARAM wparam) {
     if (wparam & MK_LBUTTON || wparam & MK_RBUTTON) {
         hdc = GetDC(hwnd);
+        setupPaintingTools(hdc);
         SelectObject(hdc, GetStockObject(WHITE_PEN));
 
         DrawBezier(hdc, points);
@@ -49,8 +50,8 @@ void Bezier::MouseMove(LPARAM lparam, WPARAM wparam) {
 void Bezier::MouseButtonUp(LPARAM lparam, WPARAM wparam) {
     if (wparam & MK_LBUTTON || wparam & MK_RBUTTON) {
         hdc = GetDC(hwnd);
+        setupPaintingTools(hdc);
         SelectObject(hdc, GetStockObject(WHITE_PEN));
-
         DrawBezier(hdc, points);
         if (wparam & MK_LBUTTON) {
             points[1].x = LOWORD (lparam);

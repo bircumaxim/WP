@@ -16,10 +16,6 @@ WNDCLASSEX wincl;
 static int screenWidth;
 static int screenHeight;
 
-#define CTRL_C_HOOT_KEY 201
-#define CTRL_V_HOOT_KEY 202
-
-
 void windowSetups(HINSTANCE hThisInstance, HINSTANCE hPrevInstance,  LPSTR lpszArgument, int nCmdShow,WNDCLASSEX wincl, WNDPROC WindowProcedure){
     /* The Window structure */
     wincl.hInstance = hThisInstance;

@@ -1,6 +1,5 @@
 #include <windows.h>
 #include <commctrl.h>
-#include <crtdbg.h>
 #include "MainWindow.h"
 #include "config.h"
 #include "Button.h"

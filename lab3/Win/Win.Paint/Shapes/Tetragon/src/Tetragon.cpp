@@ -13,7 +13,7 @@ void Tetragon::MouseButtonDown(LPARAM lParam,WPARAM wparam) {
     EndY = HIWORD(lParam);
 
     SetROP2(hdc, R2_XORPEN);
-
+    setupPaintingTools(hdc);
     Rectangle(hdc,StartX,StartY,EndX,EndY);
 
     IsDrawing = true;
@@ -26,27 +26,42 @@ void Tetragon::MouseButtonUp(LPARAM lParam,WPARAM wparam) {
     EndY = HIWORD(lParam);
 
     SetROP2(hdc, R2_XORPEN);
-
-    MoveToEx(hdc, StartX, StartY, NULL);
-    LineTo(hdc, EndX, EndY);
+    setupPaintingTools(hdc);
 
     IsDrawing = FALSE;
-
+    length = 0;
     ReleaseDC(hwnd, hdc);
 }
 
 void Tetragon::MouseMove(LPARAM lParam,WPARAM wparam) {
     hdc = GetDC(hwnd);
+
     if( IsDrawing == true )
     {
-        SetROP2(hdc, R2_NOTXORPEN);
+        if(regular){
+            SetROP2(hdc, R2_NOTXORPEN);
+            setupPaintingTools(hdc);
+            Rectangle(hdc,StartX,StartY,StartX + length,StartY + length);
 
-        Rectangle(hdc,StartX,StartY,EndX,EndY);
+            EndX = LOWORD(lParam);
+            EndY = HIWORD(lParam);
+            if(EndX > EndY)
+                length = EndX - StartX;
+            else
+                length = EndY - StartY;
 
-        EndX = LOWORD(lParam);
-        EndY = HIWORD(lParam);
 
-        Rectangle(hdc,StartX,StartY,EndX,EndY);
+            Rectangle(hdc,StartX,StartY,StartX + length,StartY + length);
+        }else{
+            SetROP2(hdc, R2_NOTXORPEN);
+            setupPaintingTools(hdc);
+            Rectangle(hdc,StartX,StartY,EndX,EndY);
+
+            EndX = LOWORD(lParam);
+            EndY = HIWORD(lParam);
+
+            Rectangle(hdc,StartX,StartY,EndX,EndY);
+        }
     }
     ReleaseDC(hwnd, hdc);
 }

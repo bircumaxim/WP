@@ -6,11 +6,11 @@
 #define LAB3_BEZIER_H
 
 
-#include "../../Core/include/Pen.h"
+#include "../../Tools/Pen/include/Pen.h"
 
 class Bezier : public Pen {
     private:
-        POINT points[];
+        POINT points[4];
         virtual void MouseButtonDown(LPARAM,WPARAM) override ;
         virtual void MouseMove(LPARAM,WPARAM) override ;
         virtual void MouseButtonUp(LPARAM,WPARAM) override ;

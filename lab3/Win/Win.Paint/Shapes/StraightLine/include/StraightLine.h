@@ -5,21 +5,20 @@
 #ifndef LAB3_STRAITLINE_H
 #define LAB3_STRAITLINE_H
 
+#include "../../../Tools/Pen/include/Pen.h"
 
-#include "../../../Core/include/Pen.h"
-
-class StraitLine : public Pen {
+class StraightLine : public Pen {
     private:
         bool vertical = false;
         bool horizontal = false;
-        bool conected = false;
+        bool conected = true;
         virtual void MouseButtonDown(LPARAM, WPARAM) override;
         virtual void MouseButtonUp(LPARAM, WPARAM) override;
         virtual void MouseMove(LPARAM, WPARAM) override;
 
 
     public:
-        StraitLine(HWND hwnd) : Pen(hwnd){}
+        StraightLine(HWND hwnd) : Pen(hwnd){}
         void ExitDrawing();
 
     bool isVertical() const {
@@ -27,7 +26,7 @@ class StraitLine : public Pen {
     }
 
     void setVertical(bool vertical) {
-        StraitLine::vertical = vertical;
+        StraightLine::vertical = vertical;
     }
 
     bool isHorizontal() const {
@@ -35,7 +34,7 @@ class StraitLine : public Pen {
     }
 
     void setHorizontal(bool horizontal) {
-        StraitLine::horizontal = horizontal;
+        StraightLine::horizontal = horizontal;
     }
 
     bool isConected() const {
@@ -43,7 +42,7 @@ class StraitLine : public Pen {
     }
 
     void setConected(bool conected) {
-        StraitLine::conected = conected;
+        StraightLine::conected = conected;
     }
 };
 

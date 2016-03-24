@@ -4,7 +4,8 @@
 
 #ifndef LAB3_FREEFROMLINE_H
 #define LAB3_FREEFROMLINE_H
-#include "../../../Core/include/Pen.h"
+
+#include "../../../Tools/Pen/include/Pen.h"
 
 class FreeformLine : public Pen {
     private:

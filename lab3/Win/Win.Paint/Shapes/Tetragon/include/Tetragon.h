@@ -6,14 +6,26 @@
 #define LAB3_TETRAGON_H
 
 
-#include "../../../Core/include/Pen.h"
+#include "../../../Tools/Pen/include/Pen.h"
 
 class Tetragon : public Pen {
-    virtual void MouseButtonDown(LPARAM,WPARAM) override;
-    virtual void MouseButtonUp(LPARAM,WPARAM) override;
-    virtual void MouseMove(LPARAM,WPARAM) override;
-public:
-    Tetragon(HWND hwnd) : Pen(hwnd){}
+    private:
+        int length = 0;
+        bool regular = false;
+        virtual void MouseButtonDown(LPARAM,WPARAM) override;
+        virtual void MouseButtonUp(LPARAM,WPARAM) override;
+        virtual void MouseMove(LPARAM,WPARAM) override;
+    public:
+        Tetragon(HWND hwnd) : Pen(hwnd){}
+
+        void setRegular(bool regular) {
+            Tetragon::regular = regular;
+        }
+
+
+    bool isRegular() const {
+        return regular;
+    }
 };
 
 

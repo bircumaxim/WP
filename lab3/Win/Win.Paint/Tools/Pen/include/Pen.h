@@ -7,7 +7,10 @@
 #include <windows.h>
 
 class Pen {
+    private:
+        HBRUSH OnEraseBkGnd(HWND);
     protected:
+
         int StartX;
         int StartY;
         int EndX;
@@ -27,17 +30,16 @@ class Pen {
         virtual void MouseMove(LPARAM,WPARAM) = 0;
         virtual void MouseButtonUp(LPARAM,WPARAM) = 0;
 
-        void setThickenss(int);
-        void setPenColor(COLORREF);
-        void setBrushColor(COLORREF);
+
 
         void setupPaintingTools(HDC hdc);
     public:
         Pen(HWND);
         void SwitchMouseMessages(UINT, LPARAM, WPARAM);
         void setStatus(bool);
-        void setColor(COLORREF);
-        void setThickness(int);
+        void setThickenss(int);
+        void setPenColor(COLORREF);
+        void setBrushColor(COLORREF);
 
 };
 

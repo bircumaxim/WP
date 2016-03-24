@@ -1,13 +1,14 @@
 //
+// Created by bircumaxim on 3/21/2016.
+//
+
+#include "../include/Eraser.h"
+
+//
 // Created by bircumaxim on 3/20/2016.
 //
 
-#include "../include/FreeformLine.h"
-#include <iostream>
-
-using namespace std;
-
-void FreeformLine::MouseButtonDown(LPARAM lparam, WPARAM wparam){
+void Eraser::MouseButtonDown(LPARAM lparam, WPARAM wparam){
     hdc = GetDC(hwnd);
     setupPaintingTools(hdc);
     StartX = LOWORD(lparam);
@@ -20,33 +21,32 @@ void FreeformLine::MouseButtonDown(LPARAM lparam, WPARAM wparam){
     StartY = HIWORD(lparam);
     IsDrawing = TRUE;
 
-//    ReleaseDC(hwnd, hdc);
+    ReleaseDC(hwnd, hdc);
 };
 
-void FreeformLine::MouseMove(LPARAM lparam, WPARAM wparam){
-    //hdc = GetDC(hwnd);
+void Eraser::MouseMove(LPARAM lparam, WPARAM wparam){
+    hdc = GetDC(hwnd);
 
     if (IsDrawing == true) {
 
-        //SetROP2(hdc, R2_NOTXORPEN);
+        //SetROP2(hdc, R2_XORPEN);
 
         MoveToEx(hdc, EndX, EndY, NULL);
         EndX = LOWORD(lparam);
         EndY = HIWORD(lparam);
-//        setupPaintingTools(hdc);
+        setupPaintingTools(hdc);
+        setPenColor(RGB(255,255,255));
         LineTo(hdc, EndX, EndY);
 
     };
-//    ReleaseDC(hwnd, hdc);
+    ReleaseDC(hwnd, hdc);
 };
 
-void FreeformLine::MouseButtonUp(LPARAM lparam, WPARAM wparam) {
+void Eraser::MouseButtonUp(LPARAM lparam, WPARAM wparam) {
     hdc = GetDC(hwnd);
 
     EndX = LOWORD(lparam);
     EndY = HIWORD(lparam);
-
-
 
     IsDrawing = FALSE;
 

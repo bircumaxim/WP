@@ -3,7 +3,8 @@
 //
 
 #include "../include/EllipseShape.h"
-
+#include <iostream>
+using namespace std;
 
 void EllipseShape::MouseButtonDown(LPARAM lParam,WPARAM wparam) {
     hdc = GetDC(hwnd);
@@ -14,7 +15,7 @@ void EllipseShape::MouseButtonDown(LPARAM lParam,WPARAM wparam) {
     EndY = HIWORD(lParam);
 
     SetROP2(hdc, R2_XORPEN);
-
+    setupPaintingTools(hdc);
     Ellipse(hdc,StartX,StartY,EndX,EndY);
 
     IsDrawing = true;
@@ -28,27 +29,42 @@ void EllipseShape::MouseButtonUp(LPARAM lParam,WPARAM wparam) {
     EndY = HIWORD(lParam);
 
     SetROP2(hdc, R2_XORPEN);
-
-    MoveToEx(hdc, StartX, StartY, NULL);
-    LineTo(hdc, EndX, EndY);
+    setupPaintingTools(hdc);
+//    Ellipse(hdc,StartX,StartY,EndX,EndY);
 
     IsDrawing = FALSE;
-
+    length = 0;
     ReleaseDC(hwnd, hdc);
 }
-
 void EllipseShape::MouseMove(LPARAM lParam,WPARAM wparam) {
     hdc = GetDC(hwnd);
     if( IsDrawing == true )
     {
-        SetROP2(hdc, R2_NOTXORPEN);
+        if(regular){
 
-        Ellipse(hdc,StartX,StartY,EndX,EndY);
+            SetROP2(hdc, R2_NOTXORPEN);
+            setupPaintingTools(hdc);
+            Ellipse(hdc,StartX,StartY,StartX + length,StartY + length);
 
-        EndX = LOWORD(lParam);
-        EndY = HIWORD(lParam);
+            EndX = LOWORD(lParam);
+            EndY = HIWORD(lParam);
+            if(EndY < EndX)
+                length = EndY - StartY;
+            else;
+                length = EndX - StartX;
 
-        Ellipse(hdc,StartX,StartY,EndX,EndY);
+            Ellipse(hdc,StartX,StartY,StartX+length,StartY + length);
+        }else{
+            SetROP2(hdc, R2_NOTXORPEN);
+            setupPaintingTools(hdc);
+            Ellipse(hdc,StartX,StartY,EndX,EndY);
+
+            EndX = LOWORD(lParam);
+            EndY = HIWORD(lParam);
+
+            Ellipse(hdc,StartX,StartY,EndX,EndY);
+        }
+
     }
     ReleaseDC(hwnd, hdc);
 }
