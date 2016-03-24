@@ -2,7 +2,11 @@
 <project version="4">
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
-    <sourceRoots />
+    <sourceRoots>
+      <file path="$PROJECT_DIR$/Win" />
+      <file path="$PROJECT_DIR$/Win/Win.Core/include" />
+      <file path="$PROJECT_DIR$/Win/Win.Core/src" />
+    </sourceRoots>
     <libraryRoots />
     <excludeRoots />
   </component>

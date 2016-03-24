@@ -2,7 +2,6 @@
 // Created by max on 2/29/2016.
 //
 
-#include <crtdbg.h>
 #include "ListBox.h"
 #include <iostream>
 using namespace std;
@@ -10,7 +9,7 @@ using namespace std;
 void ListBox::add(LPARAM element) {
     // Get handle of listbox
     HWND hwndList1 = GetDlgItem(this->parentInstance, this->getId());
-    _ASSERTE(hwndList1 != NULL);
+    //ASSERTE(hwndList1 != NULL);
     // Get actual text in buffer
     SendMessage(hwndList1, LB_ADDSTRING, (WPARAM) 0, (LPARAM) element );
 }
@@ -18,7 +17,7 @@ void ListBox::add(LPARAM element) {
 void ListBox::remove() {
     // Get handle of listbox
     HWND hwndList1 = GetDlgItem(this->parentInstance, this->getId());
-    _ASSERTE(hwndList1 != NULL);
+    //_ASSERTE(hwndList1 != NULL);
 
     // Get current selection index in listbox
     int itemIndex = (int) SendMessage(hwndList1, LB_GETCURSEL, (WPARAM)0, (LPARAM) 0);
@@ -47,7 +46,7 @@ void ListBox::remove() {
 LPARAM ListBox::get(){
     // Get handle of listbox
     HWND hwndList1 = GetDlgItem(this->parentInstance, this->getId());
-    _ASSERTE(hwndList1 != NULL);
+//    _ASSERTE(hwndList1 != NULL);
 
     // Get current selection index in listbox
     int itemIndex = (int) SendMessage(hwndList1, LB_GETCURSEL, (WPARAM)0, (LPARAM) 0);
