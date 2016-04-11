@@ -1,0 +1,4 @@
+#include <wingdi.h>
+#include "resource.h"
+
+IDB_STANDARD BITMAP "toolbar3.bmp"
