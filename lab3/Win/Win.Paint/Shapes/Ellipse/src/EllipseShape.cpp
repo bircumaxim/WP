@@ -41,7 +41,10 @@ void EllipseShape::MouseMove(LPARAM lParam,WPARAM wparam) {
     if( IsDrawing == true )
     {
         if(regular){
+<<<<<<< HEAD
 
+=======
+>>>>>>> lab4Dev
             SetROP2(hdc, R2_NOTXORPEN);
             setupPaintingTools(hdc);
             Ellipse(hdc,StartX,StartY,StartX + length,StartY + length);
