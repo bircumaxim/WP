@@ -4,7 +4,9 @@
 class Circle : virtual public Shape
 {
 public:
-	Circle(){ }
+	Circle(){
+		isCircle = true;
+	}
 
 	virtual void render(HDC hdc) override {
 		

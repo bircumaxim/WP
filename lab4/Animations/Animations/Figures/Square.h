@@ -5,7 +5,9 @@ class Square: virtual public Shape
 {
 
 public:
-	Square() {}
+	Square() {
+		isCircle = false;
+	}
 
 
 	virtual void render(HDC hdc) override {

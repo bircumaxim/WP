@@ -5,22 +5,28 @@
 class DynamicAnimation
 {
 private:
+	bool isRunning = false;
 	MainHelper *mainHelper;
-	void createShapes() {
-		mainHelper = new MainHelper;
+	void createShapes(HWND hwnd) {
+		mainHelper = new MainHelper(hwnd);
 
-		for (int i = 0; i < 10; i++) {
-			mainHelper->createShape(rand() % 400, rand() % 400, 25, rand()%3, RGB(rand() & 255, rand() & 255, rand() & 255), ((rand() % 5) + 1) + sin(((rand() % 5) + 1)*2), ((rand() % 5) + 1) + cos(((rand() % 5)+ 1))*2);
+		for (int i = 0; i < 5; i++) {
+			mainHelper->createRandomShape(rand()%2);
 		}
-		/*mainHelper->createShape(150, 150, 50, 0, RGB(255,0,0), 1, -1);
-		mainHelper->createShape(260, 150, 50, 0, RGB(0,255,0), -1, 1);*/
 		
-
 	}
 public:
-	DynamicAnimation() {
+	void start() {
+		isRunning = true;
+	}
+
+	void stop() {
+		isRunning = false;
+	}
+
+	DynamicAnimation(HWND hwnd) {
 		mainHelper = new MainHelper();
-		createShapes();
+		createShapes(hwnd);
 	};
 
 
@@ -29,12 +35,16 @@ public:
 	}
 
 	void render(HDC hdc) {
-		mainHelper->render(hdc);
+		if (isRunning) mainHelper->render(hdc);
 	}
 
 	void update(HWND hwnd) {
-		mainHelper->update(hwnd);
+		if (isRunning) mainHelper->update(hwnd);
 	}
 
+
+	void addShape(int x, int y,int type) {
+		mainHelper->createShape(x, y, 10, type, RGB(rand() % 255, rand() % 255, rand() % 255), rand() % 1 ? ((rand() % 5) + 1) + sin(((rand() % 5) + 1) * 2) : ((rand() % 5) + 1) + sin(((rand() % 5) + 1) * 2) * -1 , rand() % 1 ? ((rand() % 5) + 1) + sin(((rand() % 5) + 1) * 2) : ((rand() % 5) + 1) + sin(((rand() % 5) + 1) * 2) * -1);
+	}
 };
 

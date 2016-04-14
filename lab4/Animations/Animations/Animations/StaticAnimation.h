@@ -4,6 +4,7 @@
 class StaticAnimation
 {
 private:
+	bool isRunning = false;
 	MainHelper *mainHelper;
 	
 	void createShapes() {
@@ -15,6 +16,14 @@ private:
 	}
 
 public:
+	void start() {
+		isRunning = true;
+	}
+
+	void stop() {
+		isRunning = false;
+	}
+
 	StaticAnimation() {
 		mainHelper = new MainHelper();
 		createShapes();
@@ -25,11 +34,11 @@ public:
 	}
 
 	void render(HDC hdc) {
-		mainHelper->render(hdc);
+		if(isRunning) mainHelper->render(hdc);
 	}
 
 	void update(HWND hwnd) {
-		mainHelper->updateSize(hwnd);
+		if (isRunning) mainHelper->updateSize(hwnd);
 	}
 	
 };
